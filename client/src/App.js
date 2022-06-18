@@ -17,6 +17,10 @@ function Useragent() {
 }
 
 function App() {
+
+  fetch("/api")
+		.then((response) => response.json())
+		.then((data) => console.log(data))
 	return (
 		<Router>
 			<div className="App">

@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
 const Header = () => {
 	return (
 		<StyledHeader>
-			<h4>Tickets!</h4>
+			<h4>Tickets, jetzt!</h4>
 		</StyledHeader>
 	)
 }
