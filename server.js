@@ -1,18 +1,16 @@
-import express from "express"
+const express = require("express")
 
 const app = express()
+var useragent = require("express-useragent")
+
+app.use(useragent.express())
 
 app.get("/api", (req, res) => {
-  const users = [
-    "user1",
-    "user2",
-    "user3"
-  ]
-  res.json(users)
+	res.send(req.useragent)
 })
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"))
+	app.use(express.static("client/build"))
 }
 
 const PORT = process.env.PORT || 8000
