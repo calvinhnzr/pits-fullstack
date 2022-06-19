@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +25,8 @@ const Form = (props) => {
   const [token, setToken] = useState(0);
   const [ekey, setEkey] = useState(0);
 
+  const captchaRef = useRef(null);
+
   const data = {
     firstName,
     lastName,
@@ -46,13 +48,27 @@ const Form = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+      }).then((response) => {
+        if (response.status === 200) {
+          console.log("Captcha erfolgreich verifiziert.");
+        } else {
+          console.log("Captcha nicht verifiziert.");
+        }
       });
-
-      // navigate("/tickets/captcha")
     }
+
     if (!token && !ekey) {
       alert("Füllen Sie bitte das Captcha aus.");
     }
+
+    captchaRef.current.resetCaptcha();
+    setFirstName("");
+    setLastName("");
+    setMail("");
+    setAmount(1);
+    setTermsCondition(false);
+    setToken(0);
+    setEkey(0);
 
     event.preventDefault();
   };
@@ -124,6 +140,7 @@ const Form = (props) => {
       </label>
       {/* {props.children} */}
       <HCaptcha
+        ref={captchaRef}
         sitekey={sitekey}
         theme="dark"
         onVerify={(token, ekey) => handleVerificationSuccess(token, ekey)}
