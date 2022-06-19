@@ -39,7 +39,7 @@ const Form = (props) => {
 
   const onSubmit = (event) => {
     if (token) {
-      console.log(data);
+      // console.log(data);
 
       fetch("/api/captcha", {
         method: "POST",
@@ -50,9 +50,9 @@ const Form = (props) => {
         body: JSON.stringify(data),
       }).then((response) => {
         if (response.status === 200) {
-          console.log("Captcha erfolgreich verifiziert.");
+          console.log("Captcha verifiziert");
         } else {
-          console.log("Captcha nicht verifiziert.");
+          console.log("Captcha nicht verifiziert");
         }
       });
     }
