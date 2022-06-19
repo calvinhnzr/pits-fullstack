@@ -2,14 +2,14 @@ import React from "react"
 import Layout from "../components/Layout"
 import Title from "../components/Title"
 
-const Success = () => {
+const Failure = () => {
 	return (
 		<>
 			<Layout>
-				<Title>Success!</Title>
+				<Title>Bot detected!</Title>
 			</Layout>
 		</>
 	)
 }
 
-export default Success
+export default Failure
