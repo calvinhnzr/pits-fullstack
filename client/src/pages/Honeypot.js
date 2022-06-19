@@ -23,6 +23,8 @@ const Honeypot = () => {
 	const [mail, setMail] = useState("")
 	const [amount, setAmount] = useState(1)
 
+  function onSubmit() {}
+
 	return (
 		<Main>
 			<Title>Honeypot</Title>

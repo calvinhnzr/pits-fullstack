@@ -62,11 +62,7 @@ const StyledForm = styled.form`
 `
 
 const Form = (props) => {
-	return (
-		<StyledForm onSubmit={props.onCaptchaSubmit}>
-			{props.children}
-		</StyledForm>
-	)
+	return <StyledForm onSubmit={props.onSubmit}>{props.children}</StyledForm>
 }
 
 export default Form

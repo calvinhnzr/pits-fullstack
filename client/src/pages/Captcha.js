@@ -27,9 +27,7 @@ const Captcha = () => {
 		ekey,
 	}
 
-	const onSubmit = (event) => {}
-
-	const onCaptchaSubmit = (event) => {
+	const onSubmit = (event) => {
 		if (token) {
 			fetch("/api/captcha", {
 				method: "POST",
@@ -76,7 +74,7 @@ const Captcha = () => {
 		<Main>
 			<Title>Captcha</Title>
 
-			<Form onCaptchaSubmit={onCaptchaSubmit}>
+			<Form onSubmit={onSubmit}>
 				<label>
 					Vorname
 					<input
