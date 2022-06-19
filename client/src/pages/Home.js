@@ -21,15 +21,15 @@ const Home = () => {
 			<Main>
 				<Title>Bestseller</Title>
 				<Gallery>
-					<Card title="Honeypot" price="8,00" link="/honeypot" />
-					<Card title="Captcha" price="16,00" link="/captcha" />
-					<Card title="User Agent" price="32,00" link="/useragent" />
-					<Card title="Behavoir" price="64,00" link="/behavoir" />
+					<Card title="Honeypot 🍯" price="8,00" link="/honeypot" />
+					<Card title="Captcha 🤖" price="16,00" link="/captcha" />
+					{/* <Card title="User Agent" price="32,00" link="/useragent" /> */}
+					<Card title="Behavoir 🖱️" price="32,00" link="/behavoir" />
 					{/* <Card title="All" /> */}
 				</Gallery>
 				<Title>Empfehlungen</Title>
 				<Gallery>
-					<Card title="Alles" price="1000,00" link="/alles" />
+					<Card title="Alles" price="100,00" link="/alles" />
 					<Card title="oder nichts" price="0,00" link="/nichts" />
 				</Gallery>
 			</Main>

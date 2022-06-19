@@ -32,7 +32,7 @@ const Nav = () => {
 					<Link to="/about">About</Link>
 				</li>
 				<li>
-					<Link to="/tickets">Tickets</Link>
+					<Link to="/webbots">Webbots</Link>
 				</li>
 			</ul>
 		</StyledNav>

@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown"
 import styled from "styled-components"
 
 const StyledMarkdown = styled.section`
-	margin-top: 5rem;
+	margin-top: 2rem;
 	max-width: 1024px;
 	margin: 0 auto;
 	padding: 3rem 0;

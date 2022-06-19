@@ -1,9 +1,11 @@
 import { useState, useRef } from "react"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
-import Main from "../components/Main"
 import Form from "../components/Form"
 import Title from "../components/Title"
+import Layout from "../components/Layout"
 import { useNavigate } from "react-router-dom"
+import Markdown from "../components/Markdown"
+import captchaMD from "../markdown/captcha.md"
 
 const Captcha = () => {
 	let navigate = useNavigate()
@@ -40,6 +42,7 @@ const Captcha = () => {
 				if (response.status === 200) {
 					console.log("Captcha verifiziert", captchaDone)
 					setCaptchaDone(() => true)
+					navigate("/success")
 				} else {
 					console.log("Captcha nicht verifiziert", captchaDone)
 					setCaptchaDone(false)
@@ -71,70 +74,73 @@ const Captcha = () => {
 	}
 
 	return (
-		<Main>
-			<Title>Captcha</Title>
+		<>
+			<Layout>
+				<Title>Captcha 🤖</Title>
 
-			<Form onSubmit={onSubmit}>
-				<label>
-					Vorname
-					<input
-						type="text"
-						required
-						name={`firstName`}
-						value={firstName}
-						placeholder="Maxi"
-						onChange={(e) => setFirstName(e.target.value)}
-					/>
-				</label>
-				<label>
-					Nachname
-					<input
-						type="text"
-						required
-						name={`lastName`}
-						value={lastName}
-						placeholder="Mustermensch"
-						onChange={(e) => setLastName(e.target.value)}
-					/>
-				</label>
-				<label>
-					E-Mail
-					<input
-						type="email"
-						required
-						name={`mail`}
-						value={mail}
-						placeholder="menschliche@mailadresse.com"
-						onChange={(e) => setMail(e.target.value)}
-					/>
-				</label>
-				<label>
-					Anzahl
-					<input
-						type="number"
-						min="1"
-						required
-						name="amount"
-						value={amount}
-						onChange={(e) => setAmount(e.target.value)}
-					/>
-				</label>
-				{captchaDone ? <span>Captcha Done</span> : null}
+				<Form onSubmit={onSubmit}>
+					<label>
+						Vorname
+						<input
+							type="text"
+							required
+							name={`firstName`}
+							value={firstName}
+							placeholder="Maxi"
+							onChange={(e) => setFirstName(e.target.value)}
+						/>
+					</label>
+					<label>
+						Nachname
+						<input
+							type="text"
+							required
+							name={`lastName`}
+							value={lastName}
+							placeholder="Mustermensch"
+							onChange={(e) => setLastName(e.target.value)}
+						/>
+					</label>
+					<label>
+						E-Mail
+						<input
+							type="email"
+							required
+							name={`mail`}
+							value={mail}
+							placeholder="menschliche@mailadresse.com"
+							onChange={(e) => setMail(e.target.value)}
+						/>
+					</label>
+					<label>
+						Anzahl
+						<input
+							type="number"
+							min="1"
+							required
+							name="amount"
+							value={amount}
+							onChange={(e) => setAmount(e.target.value)}
+						/>
+					</label>
+					{captchaDone ? <span>Captcha Done</span> : null}
 
-				<HCaptcha
-					ref={captchaRef}
-					sitekey={sitekey}
-					theme="dark"
-					onVerify={(token, ekey) =>
-						handleVerificationSuccess(token, ekey)
-					}
-				/>
+					<HCaptcha
+						ref={captchaRef}
+						sitekey={sitekey}
+						theme="dark"
+						onVerify={(token, ekey) =>
+							handleVerificationSuccess(token, ekey)
+						}
+					/>
 
-				<label>
-					<input type="submit" />
-				</label>
-			</Form>
-		</Main>
+					<label>
+						<input type="submit" />
+					</label>
+				</Form>
+			</Layout>
+			{/* <Markdown>{markdown}</Markdown> */}
+		</>
 	)
 }
 
