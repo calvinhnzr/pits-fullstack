@@ -5,6 +5,10 @@ const fetch = require("node-fetch");
 
 const app = express();
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.use(express.json());
 app.use(useragent.express());
 
@@ -13,7 +17,7 @@ app.get("/api/useragent", (req, res) => {
 });
 
 app.post("/api/captcha", (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
 
   // verify captcha
   fetch("https://hcaptcha.com/siteverify", {
@@ -27,21 +31,14 @@ app.post("/api/captcha", (req, res) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.success === "true") {
-        res.send("ok");
-        // console.log(data);
+      console.log(data);
+      if (data.success === true) {
+        return res.status(200).json({ status: "ok" });
       } else {
-        res.status(404).send("error");
-        // console.log(data);
+        return res.status(404).json({ status: "error" });
       }
     });
-  res.status(404).send("error");
 });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
 const PORT = process.env.PORT || 8000;
-
 app.listen(PORT, () => console.log("Server listen on port " + PORT));
