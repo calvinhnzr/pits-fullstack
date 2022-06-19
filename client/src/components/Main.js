@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const StyledMain = styled.main`
 	max-width: 1024px;
-	margin: 3rem auto;
+	margin: 1rem auto;
 	display: grid;
 	gap: 2rem;
 	grid-template-columns: repeat(12, 1fr);

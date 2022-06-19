@@ -20,6 +20,7 @@ const StyledForm = styled.form`
 			height: 2.5rem;
 			background-color: #212324;
 			padding-left: 1rem;
+			color: white;
 			::placeholder,
 			::-webkit-input-placeholder {
 				color: white;
@@ -28,6 +29,9 @@ const StyledForm = styled.form`
 				font-size: 0.8rem;
 				font-family: "Roboto";
 				letter-spacing: 1px;
+			}
+			&:focus {
+				color: white;
 			}
 			&[type="number"] {
 				padding-right: 0.5rem;
@@ -41,6 +45,7 @@ const StyledForm = styled.form`
 			&[type="submit"] {
 				margin-top: 2rem;
 				border: none;
+				padding: 0;
 				width: 100%;
 				height: 3rem;
 				font-size: 1.2rem;

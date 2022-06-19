@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 import About from "./pages/About"

@@ -7,6 +7,8 @@ import styled from "styled-components"
 // https://dev.to/felipperegazio/how-to-create-a-simple-honeypot-to-protect-your-web-forms-from-spammers--25n8
 // features: random hash, honeypot input fields
 
+
+
 const StyledHoney = styled.label`
 	opacity: 0;
 	position: absolute;
