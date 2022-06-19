@@ -13,7 +13,7 @@ const StyledForm = styled.form`
 	}
 `
 
-const Form = () => {
+const Form = (props) => {
 	let navigate = useNavigate()
 
 	const onSubmit = () => {
@@ -46,6 +46,7 @@ const Form = () => {
 			<label>
 				<input type="submit" required />
 			</label>
+			{props.children}
 		</StyledForm>
 	)
 }

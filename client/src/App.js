@@ -7,18 +7,15 @@ import Tickets from "./pages/Tickets"
 import ErrorPage from "./pages/ErrorPage"
 import Honeypot from "./pages/Honeypot"
 import Captcha from "./pages/Captcha"
+import Useragent from "./pages/Useragent"
+import Behavoir from "./pages/Behavoir"
 
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import "./App.css"
 
-function Useragent() {
-	return <div>Hallo</div>
-}
-
 function App() {
-
-  fetch("/api")
+	fetch("/api")
 		.then((response) => response.json())
 		.then((data) => console.log(data))
 	return (
@@ -28,12 +25,11 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="about" element={<About />} />
-					<Route path="/tickets" element={<Tickets />}>
-						<Route index={true} element={<Useragent />}></Route>
+					<Route path="/tickets">
 						<Route path="honeypot" element={<Honeypot />} />
 						<Route path="captcha" element={<Captcha />} />
 						<Route path="useragent" element={<Useragent />} />
-						<Route path="behavoir" element={""} />
+						<Route path="behavoir" element={<Behavoir />} />
 						<Route path="all" element={""} />
 					</Route>
 					<Route path="*" element={<ErrorPage />} />

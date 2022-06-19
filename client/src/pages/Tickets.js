@@ -10,7 +10,7 @@ const Tickets = () => {
 		<div>
 			<Main>
 				Tickets {methodName}
-				{/* <Form></Form> */}
+				<Form></Form>
 				{/* <button onClick={() => navigate("/")}>Click me</button> */}
 			</Main>
 		</div>
