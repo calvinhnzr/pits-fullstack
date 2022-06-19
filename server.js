@@ -5,9 +5,10 @@ var useragent = require("express-useragent")
 
 app.use(useragent.express())
 
-app.get("/api", (req, res) => {
+app.get("/api/useragent", (req, res) => {
 	res.send(req.useragent)
 })
+
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"))

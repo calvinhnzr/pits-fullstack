@@ -18,12 +18,12 @@ const Captcha = () => {
 	return (
 		<Main>
 			<Form>
-				<HCaptcha
+				{/* <HCaptcha
 					sitekey={sitekey}
 					onVerify={(token, ekey) =>
 						handleVerificationSuccess(token, ekey)
 					}
-				/>
+				/> */}
 			</Form>
 		</Main>
 	)
