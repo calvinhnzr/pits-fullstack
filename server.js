@@ -13,7 +13,7 @@ app.get("/api/useragent", (req, res) => {
 });
 
 app.post("/api/captcha", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   // verify captcha
   fetch("https://hcaptcha.com/siteverify", {
@@ -27,10 +27,15 @@ app.post("/api/captcha", (req, res) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      if (data.success === "true") {
+        res.send("ok");
+        // console.log(data);
+      } else {
+        res.status(404).send("error");
+        // console.log(data);
+      }
     });
-
-  res.send("ok");
+  res.status(404).send("error");
 });
 
 if (process.env.NODE_ENV === "production") {
