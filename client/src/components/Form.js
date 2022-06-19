@@ -55,20 +55,20 @@ const Form = (props) => {
           console.log("Captcha nicht verifiziert");
         }
       });
+
+      captchaRef.current.resetCaptcha();
+      setFirstName("");
+      setLastName("");
+      setMail("");
+      setAmount(1);
+      setTermsCondition(false);
+      setToken(0);
+      setEkey(0);
     }
 
     if (!token && !ekey) {
       alert("Füllen Sie bitte das Captcha aus.");
     }
-
-    captchaRef.current.resetCaptcha();
-    setFirstName("");
-    setLastName("");
-    setMail("");
-    setAmount(1);
-    setTermsCondition(false);
-    setToken(0);
-    setEkey(0);
 
     event.preventDefault();
   };
