@@ -14,5 +14,6 @@ body {
   left: 0;
   top: 0;
   position: absolute;
-  background: url('../../public/img/honeypotBG.png') no-repeat center center / cover;
+  /* background: url('../../public/img/honeypotBG.png') no-repeat center center / cover; */
+  background:  no-repeat center center / cover;
 }

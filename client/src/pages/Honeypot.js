@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { makeid } from "../helpers/makeid"
-import Main from "../components/Main"
 import Title from "../components/Title"
 import Form from "../components/Form"
 import Markdown from "../components/Markdown"
 import styled from "styled-components"
 import honeypotMD from "../markdown/honeypot.md"
+import img from "../images/honeypotBG.png"
+import Layout from "../components/Layout"
 // https://dev.to/felipperegazio/how-to-create-a-simple-honeypot-to-protect-your-web-forms-from-spammers--25n8
 // features: random hash, honeypot input fields
 
@@ -37,8 +38,8 @@ const Honeypot = () => {
 
 	return (
 		<>
-			<Main>
-				<Title>Honeypot</Title>
+			<Layout img={img}>
+				<Title>Honeypot 🍯</Title>
 				<Form isHoneypot={true}>
 					<StyledHoney htmlFor="name">
 						<input
@@ -106,7 +107,7 @@ const Honeypot = () => {
 						<input type="submit" />
 					</label>
 				</Form>
-			</Main>
+			</Layout>
 			{/* <Markdown>{markdown}</Markdown> */}
 		</>
 	)

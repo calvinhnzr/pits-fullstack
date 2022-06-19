@@ -1,13 +1,14 @@
 import styled from "styled-components"
 
 const StyledForm = styled.form`
-	grid-column: 5 / 9;
+	grid-column: main;
 	display: flex;
 	flex-direction: column;
-	/* justify-self: center; */
-	/* outline: 1px solid red; */
 	width: 100%;
 	height: fit-content;
+	width: 20rem;
+	justify-self: center;
+
 	label {
 		display: flex;
 		flex-direction: column;
