@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 import About from "./pages/About"
@@ -31,7 +31,7 @@ function App() {
 					</Route>
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
-				<Footer />
+				{/* <Footer /> */}
 			</div>
 		</Router>
 	)

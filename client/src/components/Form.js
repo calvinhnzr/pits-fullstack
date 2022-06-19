@@ -7,7 +7,7 @@ const StyledForm = styled.form`
 	/* justify-self: center; */
 	/* outline: 1px solid red; */
 	width: 100%;
-
+	height: fit-content;
 	label {
 		display: flex;
 		flex-direction: column;

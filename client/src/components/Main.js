@@ -3,13 +3,17 @@ import styled from "styled-components"
 
 const StyledMain = styled.main`
 	max-width: 1024px;
-	margin: 1rem auto;
+	margin: 0 auto;
 	display: grid;
 	gap: 2rem;
+	height: calc(100vh - 7rem);
 	grid-template-columns: repeat(12, 1fr);
 	/* outline: 1px solid green; */
+	align-content: start;
+
 	> * {
 		/* outline: 1px solid white; */
+		/* align-items: start; */
 	}
 `
 

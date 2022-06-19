@@ -1,13 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { makeid } from "../helpers/makeid"
 import Main from "../components/Main"
 import Title from "../components/Title"
 import Form from "../components/Form"
+import Markdown from "../components/Markdown"
 import styled from "styled-components"
+import honeypotMD from "../markdown/honeypot.md"
 // https://dev.to/felipperegazio/how-to-create-a-simple-honeypot-to-protect-your-web-forms-from-spammers--25n8
 // features: random hash, honeypot input fields
-
-
 
 const StyledHoney = styled.label`
 	opacity: 0;
@@ -25,79 +25,90 @@ const Honeypot = () => {
 	const [mail, setMail] = useState("")
 	const [amount, setAmount] = useState(1)
 
-  function onSubmit() {}
+	function onSubmit() {}
+
+	const [markdown, setMarkdown] = useState("")
+
+	useEffect(() => {
+		fetch(honeypotMD)
+			.then((response) => response.text())
+			.then((result) => setMarkdown(result))
+	}, [honeypotMD])
 
 	return (
-		<Main>
-			<Title>Honeypot</Title>
-			<Form isHoneypot={true}>
-				<StyledHoney htmlFor="name">
-					<input
-						autoComplete="off"
-						type="text"
-						id="name"
-						name="name"
-						placeholder="Your name here"
-					/>
-				</StyledHoney>
-				<StyledHoney htmlFor="email">
-					<input
-						autoComplete="off"
-						type="email"
-						id="email"
-						name="email"
-						placeholder="Your e-mail here"
-					/>
-				</StyledHoney>
-				<label>
-					Vorname
-					<input
-						type="text"
-						required
-						name={`firstName${makeid(5)}`}
-						value={firstName}
-						placeholder="Maxi"
-						onChange={(e) => setFirstName(e.target.value)}
-					/>
-				</label>
-				<label>
-					Nachname
-					<input
-						type="text"
-						required
-						name={`lastName${makeid(5)}`}
-						value={lastName}
-						placeholder="Mustermensch"
-						onChange={(e) => setLastName(e.target.value)}
-					/>
-				</label>
-				<label>
-					E-Mail
-					<input
-						type="email"
-						required
-						name={`mail${makeid(5)}`}
-						value={mail}
-						placeholder="menschliche@mailadresse.com"
-						onChange={(e) => setMail(e.target.value)}
-					/>
-				</label>
-				<label>
-					Anzahl
-					<input
-						type="number"
-						min="1"
-						required
-						name="amount"
-						value={amount}
-						onChange={(e) => setAmount(e.target.value)}
-					/>
-				</label>
-				<label>
-					<input type="submit" />
-				</label>
-			</Form>
-		</Main>
+		<>
+			<Main>
+				<Title>Honeypot</Title>
+				<Form isHoneypot={true}>
+					<StyledHoney htmlFor="name">
+						<input
+							autoComplete="off"
+							type="text"
+							id="name"
+							name="name"
+							placeholder="Your name here"
+						/>
+					</StyledHoney>
+					<StyledHoney htmlFor="email">
+						<input
+							autoComplete="off"
+							type="email"
+							id="email"
+							name="email"
+							placeholder="Your e-mail here"
+						/>
+					</StyledHoney>
+					<label>
+						Vorname
+						<input
+							type="text"
+							required
+							name={`firstName${makeid(5)}`}
+							value={firstName}
+							placeholder="Maxi"
+							onChange={(e) => setFirstName(e.target.value)}
+						/>
+					</label>
+					<label>
+						Nachname
+						<input
+							type="text"
+							required
+							name={`lastName${makeid(5)}`}
+							value={lastName}
+							placeholder="Mustermensch"
+							onChange={(e) => setLastName(e.target.value)}
+						/>
+					</label>
+					<label>
+						E-Mail
+						<input
+							type="email"
+							required
+							name={`mail${makeid(5)}`}
+							value={mail}
+							placeholder="menschliche@mailadresse.com"
+							onChange={(e) => setMail(e.target.value)}
+						/>
+					</label>
+					<label>
+						Anzahl
+						<input
+							type="number"
+							min="1"
+							required
+							name="amount"
+							value={amount}
+							onChange={(e) => setAmount(e.target.value)}
+						/>
+					</label>
+					<label>
+						<input type="submit" />
+					</label>
+				</Form>
+			</Main>
+			{/* <Markdown>{markdown}</Markdown> */}
+		</>
 	)
 }
 
