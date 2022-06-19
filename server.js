@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const useragent = require("express-useragent");
+const fetch = require("node-fetch");
 
 const app = express();
 
