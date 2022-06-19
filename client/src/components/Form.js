@@ -1,15 +1,67 @@
 import styled from "styled-components"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
 import { useNavigate } from "react-router-dom"
 
 const StyledForm = styled.form`
-	grid-column: span 6;
+	grid-column: 5 / 9;
 	display: flex;
 	flex-direction: column;
+	/* justify-self: center; */
+	/* outline: 1px solid red; */
+	width: 100%;
 	label {
 		display: flex;
 		flex-direction: column;
+		margin-bottom: 1rem;
+		font-size: 0.9rem;
+		input {
+			margin-top: 0.5rem;
+			border-radius: 0.75rem;
+			border: 3px solid #3c3c3c;
+			height: 2.5rem;
+			background-color: #212324;
+			padding-left: 1rem;
+			::placeholder,
+			::-webkit-input-placeholder {
+				color: white;
+				opacity: 0.7;
+				font-weight: 400;
+				font-size: 0.8rem;
+				font-family: "Roboto";
+				letter-spacing: 1px;
+			}
+			&[type="number"] {
+				margin-bottom: 1rem;
+				padding-right: 0.5rem;
+				color: white;
+				opacity: 0.7;
+				font-weight: 400;
+				font-size: 0.8rem;
+				font-family: "Roboto";
+				letter-spacing: 1px;
+			}
+			&[type="submit"] {
+				margin-top: 2rem;
+				border: none;
+
+				width: 100%;
+				height: 3rem;
+				font-size: 1.2rem;
+				font-weight: 600;
+				letter-spacing: 1px;
+				color: #191a1b;
+				box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.55);
+				background-image: linear-gradient(
+					120deg,
+					#f6d365 0%,
+					#fda085 100%
+				);
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
 	}
 `
 
@@ -24,6 +76,8 @@ const Form = (props) => {
 
 	const [token, setToken] = useState(0)
 	const [ekey, setEkey] = useState(0)
+
+	const captchaRef = useRef(null)
 
 	const data = {
 		firstName,
@@ -40,14 +94,15 @@ const Form = (props) => {
 			console.log(data)
 			event.preventDefault()
 			// navigate("/tickets/captcha")
+			captchaRef.current.resetCaptcha()
 		}
 		if (!token && !ekey) {
 			alert("Füllen Sie bitte das Captcha aus.")
 		}
 	}
 
-	const sitekey = "90ac8810-80ba-42f6-abd9-c7ab8cef95e1"
-	// const sitekey = "10000000-ffff-ffff-ffff-000000000001"
+	// const sitekey = "90ac8810-80ba-42f6-abd9-c7ab8cef95e1"
+	const sitekey = "10000000-ffff-ffff-ffff-000000000001"
 
 	function handleVerificationSuccess(token, ekey) {
 		setToken(token)
@@ -63,6 +118,7 @@ const Form = (props) => {
 					required
 					name="firstName"
 					value={firstName}
+					placeholder="Maxi"
 					onChange={(e) => setFirstName(e.target.value)}
 				/>
 			</label>
@@ -73,6 +129,7 @@ const Form = (props) => {
 					required
 					name="lastName"
 					value={lastName}
+					placeholder="Mustermensch"
 					onChange={(e) => setLastName(e.target.value)}
 				/>
 			</label>
@@ -83,6 +140,7 @@ const Form = (props) => {
 					required
 					name="mail"
 					value={mail}
+					placeholder="menschliche@mailadresse.com"
 					onChange={(e) => setMail(e.target.value)}
 				/>
 			</label>
@@ -98,27 +156,18 @@ const Form = (props) => {
 				/>
 			</label>
 
-			<label>
-				AGB
-				<input
-					type="checkbox"
-					required
-					name="termsCondition"
-					value={termsCondition}
-					onChange={(e) => setTermsCondition(e.target.value)}
-				/>
-			</label>
-			<label>
-				<input type="submit" />
-			</label>
-			{/* {props.children} */}
-			<HCaptcha
+			{props.children}
+			{/* <HCaptcha
+				ref={captchaRef}
 				sitekey={sitekey}
 				theme="dark"
 				onVerify={(token, ekey) =>
 					handleVerificationSuccess(token, ekey)
 				}
-			/>
+			/> */}
+			<label>
+				<input type="submit" />
+			</label>
 		</StyledForm>
 	)
 }
