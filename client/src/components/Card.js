@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-
+import { useNavigate } from "react-router-dom"
 const StyledCard = styled.div`
 	background-color: #191a1b;
+	background-color: #595959;
 	border-radius: 0.5rem;
 	box-shadow: 4px 4px 20px 1px rgba(0, 0, 0, 0.25);
 	aspect-ratio: 3 / 4;
@@ -48,16 +49,46 @@ const StyledCard = styled.div`
 	}
 `
 
+const StyledLink = styled.label`
+	display: flex;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	flex-direction: column-reverse;
+	cursor: pointer;
+	padding: 1rem;
+	height: calc(100% - 2rem);
+	input {
+		display: none;
+	}
+`
+
 const Card = (props) => {
+	let navigate = useNavigate()
 	return (
 		<StyledCard>
 			<img alt="cover" />
-			<Link to={"/tickets" + props.link}>
-				<p>
-					Tickets ab <span>{props.price}</span>{" "}
-				</p>
-				<h3>{props.title}</h3>
-			</Link>
+
+			{props.link ? (
+				<Link to={"/tickets" + props.link}>
+					<p>
+						Tickets ab <span>{props.price}</span>{" "}
+					</p>
+					<h3>{props.title}</h3>
+				</Link>
+			) : (
+				<StyledLink>
+					<input
+						type="button"
+						onClick={() => navigate("/ticktes/nolink")}
+					/>
+					<p>
+						Tickets ab <span>{props.price}</span>{" "}
+					</p>
+					<h3>{props.title}</h3>
+				</StyledLink>
+			)}
 		</StyledCard>
 	)
 }

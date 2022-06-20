@@ -3,6 +3,7 @@ import Main from "../components/Main"
 import Title from "../components/Title"
 import Form from "../components/Form"
 import Layout from "../components/Layout"
+import { useNavigate } from "react-router-dom"
 import Markdown from "../components/Markdown"
 import behavoirMD from "../markdown/behavoir.md"
 import styled from "styled-components"
@@ -20,21 +21,75 @@ const DisplayData = styled.div`
 `
 
 const Behavoir = () => {
+	let navigate = useNavigate()
 	const [firstName, setFirstName] = useState("")
 	const [lastName, setLastName] = useState("")
 	const [mail, setMail] = useState("")
 	const [amount, setAmount] = useState(1)
 
-	const [mousemove, setMousemove] = useState({ left: 0, top: 0 })
-	const [click, setClick] = useState(0)
-	function onSubmit() {}
+	const [ranking, setRanking] = useState(0)
+
+	// let ranking = 0
+
+	function onSubmit(e) {
+		// console.log("onsubmit", ranking)
+		if (ranking >= 10) {
+			navigate("/success")
+			// console.log("success ", ranking)
+		} else {
+			navigate("/failure")
+			// console.log("failure ", ranking)
+		}
+		e.preventDefault()
+	}
+
+	function handleKeyDown(event) {
+		if (event) {
+			setRanking(ranking + 1)
+			window.removeEventListener("keydown", handleKeyDown)
+		}
+	}
+
+	function handleMousemove(event) {
+		if (event) {
+			setRanking(ranking + 1)
+			window.removeEventListener("mousemove", handleMousemove)
+		}
+	}
+
+	function handleTouchStart(event) {
+		if (event) {
+			setRanking(ranking + 1)
+			window.removeEventListener("ontouchstart", handleTouchStart)
+		}
+	}
+
+	function handleTouchMove(event) {
+		if (event) {
+			setRanking(ranking + 1)
+			window.removeEventListener("ontouchmove	", handleTouchMove)
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener("keydown", handleKeyDown)
+		window.addEventListener("mousemove", handleMousemove)
+		window.addEventListener("ontouchstart", handleTouchStart)
+		window.addEventListener("ontouchmove	", handleTouchMove)
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown)
+			window.removeEventListener("mousemove", handleMousemove)
+			window.removeEventListener("ontouchstart", handleTouchStart)
+			window.removeEventListener("ontouchmove	", handleTouchMove)
+		}
+	}, [ranking])
 
 	return (
 		<>
 			{/* <DisplayData></DisplayData> */}
 			<Layout>
 				<Title>Behavoir 🖱️ </Title>
-				<Form>
+				<Form onSubmit={onSubmit}>
 					<label>
 						Vorname
 						<input

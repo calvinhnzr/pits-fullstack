@@ -26,12 +26,12 @@ const Home = () => {
 					<Card title="Captcha 🤖" price="16,00" link="/captcha" />
 					{/* <Card title="User Agent" price="32,00" link="/useragent" /> */}
 					<Card title="Behavoir 🖱️" price="32,00" link="/behavoir" />
-					{/* <Card title="All" /> */}
 				</Gallery>
 				<Title>Empfehlungen</Title>
 				<Gallery>
 					<Card title="Alles" price="100,00" link="/alles" />
 					<Card title="oder nichts" price="0,00" link="/nichts" />
+					<Card title="Not a Link ⚓" price="64,00" link={false} />
 				</Gallery>
 			</Main>
 		</div>

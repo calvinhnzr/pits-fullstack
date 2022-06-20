@@ -27,21 +27,22 @@ function App() {
 	const [botDetected, setBotDetected] = useState(false)
 
 	useEffect(() => {
-		if (/HeadlessChrome/.test(window.navigator.userAgent)) {
+		//antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html
+		https: if (/HeadlessChrome/.test(window.navigator.userAgent)) {
 			console.log("Chrome headless detected")
-			setBotDetected(true)
+			// setBotDetected(true)
 		}
 		if (navigator.webdriver) {
 			console.log("Chrome headless detected")
-			setBotDetected(true)
+			// setBotDetected(true)
 		}
 		if (navigator.plugins.length === 0) {
 			console.log("It may be Chrome headless")
-			setBotDetected(true)
+			// setBotDetected(true)
 		}
 		if (navigator.languages === "") {
 			console.log("Chrome headless detected")
-			setBotDetected(true)
+			// setBotDetected(true)
 		}
 		navigator.permissions
 			.query({ name: "notifications" })
@@ -51,7 +52,7 @@ function App() {
 					permissionStatus.state === "prompt"
 				) {
 					console.log("This is Chrome headless")
-					setBotDetected(true)
+					// setBotDetected(true)
 				} else {
 					console.log("This is not Chrome headless")
 					setBotDetected(false)
