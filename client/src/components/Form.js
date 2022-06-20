@@ -55,11 +55,12 @@ const StyledForm = styled.form`
 				color: #191a1b;
 				box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.55);
 				/* honeypot */
-				background-image: linear-gradient(
+				/* background-image: linear-gradient(
 					120deg,
 					#f6d365 0%,
 					#fda085 100%
-				);
+				); */
+
 				/* captcha */
 				/* background-image: linear-gradient(
 					140deg,

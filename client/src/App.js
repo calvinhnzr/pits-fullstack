@@ -21,6 +21,7 @@ import "./styles/App.css"
 import Success from "./pages/Success"
 import Failure from "./pages/Failure"
 import { ClientJS } from "clientjs"
+import NoProtection from "./pages/NoProtection"
 
 function App() {
 	const [botDetected, setBotDetected] = useState(false)
@@ -74,6 +75,7 @@ function App() {
 						<Route path="captcha" element={<Captcha />} />
 						<Route path="useragent" element={<Useragent />} />
 						<Route path="behavior" element={<Behavior />} />
+						<Route path="noprotection" element={<NoProtection />} />
 						<Route path="all" element={""} />
 					</Route>
 					<Route path="*" element={<ErrorPage />} />
