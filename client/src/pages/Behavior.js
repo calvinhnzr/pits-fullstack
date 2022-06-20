@@ -25,17 +25,37 @@ const Behavior = () => {
 	const [timeStamp, setTimeStamp] = useState([])
 
 	function getDifference(array) {
+		// array mit Differenzen zwischen den Keypresses
 		let tempArr = []
 		let temp
-		for (let i = 0; i < array.length; i++) {
+
+		for (let i = 0; i < array.length - 1; i++) {
 			temp = 0
 			temp = array[i + 1] - array[i]
 			temp = Math.round(temp)
 			tempArr.push(temp)
 		}
-		tempArr.pop()
-		console.log(array)
 		console.log(tempArr)
+		return tempArr
+	}
+
+	function getLinearRegression(newArr) {
+		let i = 0
+		let sum = 0
+		let len = newArr.length
+		let mittelwert = 0
+		while (i < len) {
+			sum = sum + newArr[i++]
+		}
+		mittelwert = sum / len
+		let lineareAbweichung = 0
+		for (let j = 0; j < newArr.length; j++) {
+			lineareAbweichung += Math.abs(newArr[j] - mittelwert)
+		}
+		lineareAbweichung *= 1 / newArr.length
+		console.log(mittelwert)
+		console.log(lineareAbweichung)
+		return lineareAbweichung
 	}
 
 	function handleKeydown(e) {
@@ -59,7 +79,13 @@ const Behavior = () => {
 	const [amount, setAmount] = useState(1)
 
 	function onSubmit(e) {
-		getDifference(timeStamp)
+		let score = getLinearRegression(getDifference(timeStamp))
+
+		if (score > 10) {
+			navigate("/success")
+		} else {
+			navigate("/failure")
+		}
 		e.preventDefault()
 	}
 
