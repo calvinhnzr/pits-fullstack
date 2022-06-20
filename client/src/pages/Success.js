@@ -6,7 +6,8 @@ const Success = () => {
 	return (
 		<>
 			<Layout>
-				<Title>Success!</Title>
+				<Title>Form submitted!</Title>
+
 			</Layout>
 		</>
 	)

@@ -5,7 +5,7 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Routes,
-	useLocation,
+	Navigate,
 } from "react-router-dom"
 
 import About from "./pages/About"
@@ -19,23 +19,49 @@ import Behavoir from "./pages/Behavoir"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import "./App.css"
-import styled from "styled-components"
-import img from "./images/honeypotBG.png"
 import Success from "./pages/Success"
 import Failure from "./pages/Failure"
 
 function App() {
-	const [isBot, setisBot] = useState(true)
+	const [botDetected, setBotDetected] = useState(false)
 
-	// useEffect(() => {
-	// 	fetch("/api/useragent")
-	// 		.then((response) => response.json())
-	// 		.then((data) => console.log(data))
-	// }, [])
+	useEffect(() => {
+		if (/HeadlessChrome/.test(window.navigator.userAgent)) {
+			console.log("Chrome headless detected")
+			setBotDetected(true)
+		}
+		if (navigator.webdriver) {
+			console.log("Chrome headless detected")
+			setBotDetected(true)
+		}
+		if (navigator.plugins.length === 0) {
+			console.log("It may be Chrome headless")
+			setBotDetected(true)
+		}
+		if (navigator.languages === "") {
+			console.log("Chrome headless detected")
+			setBotDetected(true)
+		}
+		navigator.permissions
+			.query({ name: "notifications" })
+			.then(function (permissionStatus) {
+				if (
+					Notification.permission === "denied" &&
+					permissionStatus.state === "prompt"
+				) {
+					console.log("This is Chrome headless")
+					setBotDetected(true)
+				} else {
+					console.log("This is not Chrome headless")
+					setBotDetected(false)
+				}
+			})
+	}, [])
 
 	return (
 		<Router>
 			<div className="App">
+				{botDetected && <Navigate replace to="/failure" />}
 				<Nav />
 				<Routes>
 					<Route path="/" element={<Home />} />

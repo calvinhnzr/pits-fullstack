@@ -10,7 +10,7 @@ const StyledLayout = styled.main`
 		minmax(2rem, 1fr) [full-end];
 
 	background: no-repeat center center / cover;
-	background-position: 0 -9rem;
+	background-position: center;
 	position: relative;
 	gap: 2rem 0;
 	align-content: start;

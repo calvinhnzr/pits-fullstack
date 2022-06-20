@@ -54,11 +54,25 @@ const StyledForm = styled.form`
 				letter-spacing: 1px;
 				color: #191a1b;
 				box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.55);
+				/* honeypot */
 				background-image: linear-gradient(
 					120deg,
 					#f6d365 0%,
 					#fda085 100%
 				);
+				/* captcha */
+				/* background-image: linear-gradient(
+					140deg,
+					#edfffb 0%,
+					#6ab2b3 50%,
+					#2a808e 100%
+				);
+				background-image: linear-gradient(
+					120deg,
+					#edfffb 0%,
+					#00c3bf 60%,
+					#0089bf 100%
+				); */
 				&:hover {
 					cursor: pointer;
 				}

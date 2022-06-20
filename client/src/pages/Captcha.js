@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import { useNavigate } from "react-router-dom"
 import Markdown from "../components/Markdown"
 import captchaMD from "../markdown/captcha.md"
+import img from "../images/captchaBG.png"
 
 const Captcha = () => {
 	let navigate = useNavigate()
@@ -75,7 +76,7 @@ const Captcha = () => {
 
 	return (
 		<>
-			<Layout>
+			<Layout img={img}>
 				<Title>Captcha 🤖</Title>
 
 				<Form onSubmit={onSubmit}>
