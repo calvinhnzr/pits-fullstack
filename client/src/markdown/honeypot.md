@@ -4,6 +4,11 @@ Ein Honeypot ist ein...
 
 ## Implementierung
 
+```js
+console.log("hallo")
+```
+
+
 ## Vorteile
 
 ## Nachteile
