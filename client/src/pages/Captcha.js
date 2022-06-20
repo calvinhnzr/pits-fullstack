@@ -76,7 +76,7 @@ const Captcha = () => {
 
 	return (
 		<>
-			<Layout img={img}>
+			<Layout>
 				<Title>Captcha 🤖</Title>
 
 				<Form onSubmit={onSubmit}>

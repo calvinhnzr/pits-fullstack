@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react"
-import { makeid } from "../helpers/makeid"
 import Title from "../components/Title"
 import Form from "../components/Form"
 import Layout from "../components/Layout"
-import img from "../images/cucumberBG.png"
+import img from "../images/noprotectionBG.png"
 import { useNavigate } from "react-router-dom"
 
 const NoProtection = () => {
@@ -28,7 +27,7 @@ const NoProtection = () => {
 						<input
 							type="text"
 							required
-							name={`firstName${makeid(5)}`}
+							name={`firstName`}
 							value={firstName}
 							placeholder="Maxi"
 							onChange={(e) => setFirstName(e.target.value)}
@@ -39,7 +38,7 @@ const NoProtection = () => {
 						<input
 							type="text"
 							required
-							name={`lastName${makeid(5)}`}
+							name={`lastName`}
 							value={lastName}
 							placeholder="Mustermensch"
 							onChange={(e) => setLastName(e.target.value)}
@@ -50,7 +49,7 @@ const NoProtection = () => {
 						<input
 							type="email"
 							required
-							name={`mail${makeid(5)}`}
+							name={`mail`}
 							value={mail}
 							placeholder="menschliche@mailadresse.com"
 							onChange={(e) => setMail(e.target.value)}
