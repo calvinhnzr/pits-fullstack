@@ -16,9 +16,10 @@ import Behavoir from "./pages/Behavoir"
 
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
-import "./App.css"
+import "./styles/App.css"
 import Success from "./pages/Success"
 import Failure from "./pages/Failure"
+import { ClientJS } from "clientjs"
 
 function App() {
 	const [botDetected, setBotDetected] = useState(false)
@@ -54,7 +55,7 @@ function App() {
 					setBotDetected(false)
 				}
 			})
-	}, [botDetected])
+	}, [])
 
 	return (
 		<Router>
