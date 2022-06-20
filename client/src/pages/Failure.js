@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Layout from "../components/Layout"
 import Title from "../components/Title"
+import Subtitle from "../components/Subtitle"
 
 const Failure = () => {
 	const [data, setdata] = useState(null)
@@ -14,8 +15,8 @@ const Failure = () => {
 	return (
 		<>
 			<Layout>
-				<Title>Bot detected!</Title>
-				<Title>IPv4: {data?.IPv4}</Title>
+				<Title className={"failure"}>Bot detected!</Title>
+				<Subtitle>IPv4: {data?.IPv4}</Subtitle>
 			</Layout>
 		</>
 	)

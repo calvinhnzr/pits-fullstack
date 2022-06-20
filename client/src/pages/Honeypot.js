@@ -3,6 +3,7 @@ import { makeid } from "../helpers/makeid"
 import Title from "../components/Title"
 import Form from "../components/Form"
 import Markdown from "../components/Markdown"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import honeypotMD from "../markdown/honeypot.md"
 import img from "../images/honeypotBG.png"
@@ -11,22 +12,43 @@ import Layout from "../components/Layout"
 // features: random hash, honeypot input fields
 
 const StyledHoney = styled.label`
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 0;
-	width: 0;
-	z-index: -1;
+	color: #f6d365;
+	font-weight: bold;
+	letter-spacing: 1px;
+	&.hidden {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 0;
+		width: 0;
+		z-index: -1;
+	}
+`
+
+const StyledHoneypot = styled.label`
+	cursor: pointer;
+	button {
+		display: none;
+	}
 `
 
 const Honeypot = () => {
+	let navigate = useNavigate()
+	const [honeyName, setHoneyName] = useState("")
 	const [firstName, setFirstName] = useState("")
 	const [lastName, setLastName] = useState("")
 	const [mail, setMail] = useState("")
 	const [amount, setAmount] = useState(1)
 
-	function onSubmit() {}
+	function onSubmit(e) {
+		if (!honeyName) {
+			navigate("/success")
+		} else {
+			navigate("/failure")
+		}
+		e.preventDefault()
+	}
 
 	const [markdown, setMarkdown] = useState("")
 
@@ -36,27 +58,36 @@ const Honeypot = () => {
 			.then((result) => setMarkdown(result))
 	}, [honeypotMD])
 
+	const [toggleHoneyBot, setToggleHoneyBot] = useState(false)
+
+	function handleClick() {
+		setToggleHoneyBot(!toggleHoneyBot)
+	}
+
 	return (
 		<>
 			<Layout img={img}>
-				<Title>Honeypot 🍯</Title>
-				<Form isHoneypot={true}>
-					<StyledHoney htmlFor="name">
+				<Title>
+					Honeypot{" "}
+					<StyledHoneypot>
+						🍯
+						<button onClick={handleClick}>click</button>
+					</StyledHoneypot>
+				</Title>
+
+				<Form onSubmit={onSubmit}>
+					<StyledHoney
+						htmlFor="name"
+						className={toggleHoneyBot ? "" : "hidden"}>
+						Honeypot
 						<input
 							autoComplete="off"
 							type="text"
 							id="name"
 							name="name"
-							placeholder="Your name here"
-						/>
-					</StyledHoney>
-					<StyledHoney htmlFor="email">
-						<input
-							autoComplete="off"
-							type="email"
-							id="email"
-							name="email"
-							placeholder="Your e-mail here"
+							placeholder="Your Honeyname"
+							value={honeyName}
+							onChange={(e) => setHoneyName(e.target.value)}
 						/>
 					</StyledHoney>
 					<label>
@@ -104,7 +135,13 @@ const Honeypot = () => {
 						/>
 					</label>
 					<label>
-						<input type="submit" />
+						<input
+							type="submit"
+							style={{
+								background:
+									"linear-gradient( 120deg,	#f6d365 0%,#fda085 100%)",
+							}}
+						/>
 					</label>
 				</Form>
 			</Layout>

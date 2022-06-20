@@ -31,11 +31,11 @@ const Home = () => {
 				<Gallery>
 					{/* <Card title="Alles" price="100,00" link="/alles" /> */}
 					<Card
-						title="No Protection 🧿"
+						title="No Protection 🥒"
 						price="0,00"
 						link="/noprotection"
 					/>
-					<Card title="Not a Link ⚓" price="64,00" link={false} />
+					{/* <Card title="Not a Link ⚓" price="64,00" link={false} /> */}
 				</Gallery>
 			</Main>
 		</div>

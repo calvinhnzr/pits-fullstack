@@ -136,7 +136,13 @@ const Captcha = () => {
 					/>
 
 					<label>
-						<input type="submit" />
+						<input
+							type="submit"
+							style={{
+								background:
+									"linear-gradient( 120deg,#b0d8e8 0%,#00c3bf 60%,#0089bf 100%)",
+							}}
+						/>
 					</label>
 				</Form>
 			</Layout>
