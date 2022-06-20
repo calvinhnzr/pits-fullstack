@@ -25,7 +25,7 @@ const Home = () => {
 					<Card title="Honeypot 🍯" price="8,00" link="/honeypot" />
 					<Card title="Captcha 🤖" price="16,00" link="/captcha" />
 					{/* <Card title="User Agent" price="32,00" link="/useragent" /> */}
-					<Card title="Behavoir 🖱️" price="32,00" link="/behavoir" />
+					<Card title="Behavior 🖱️" price="32,00" link="/behavior" />
 				</Gallery>
 				<Title>Empfehlungen</Title>
 				<Gallery>
