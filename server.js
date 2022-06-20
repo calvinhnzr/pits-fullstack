@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(useragent.express());
 
 app.get("/api/useragent", (req, res) => {
+  console.log(req.useragent.source.includes("HeadlessChrome"));
   res.send(req.useragent);
 });
 
