@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 
-
 import {
 	BrowserRouter as Router,
 	Route,
@@ -8,7 +7,7 @@ import {
 	Navigate,
 } from "react-router-dom"
 
-import About from "./pages/About"
+import Login from "./pages/Login"
 import Home from "./pages/Home"
 import ErrorPage from "./pages/ErrorPage"
 import Honeypot from "./pages/Honeypot"
@@ -27,8 +26,8 @@ function App() {
 	const [botDetected, setBotDetected] = useState(false)
 
 	useEffect(() => {
-		//antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html
-		https: if (/HeadlessChrome/.test(window.navigator.userAgent)) {
+		// https://antoinevastel.com/bot%20detection/2018/01/17/detect-chrome-headless-v2.html
+		if (/HeadlessChrome/.test(window.navigator.userAgent)) {
 			console.log("Chrome headless detected")
 			setBotDetected(true)
 		}
@@ -67,7 +66,7 @@ function App() {
 				<Nav />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="about" element={<About />} />
+					<Route path="login" element={<Login />} />
 					<Route path="success" element={<Success />} />
 					<Route path="failure" element={<Failure />} />
 					<Route path="/tickets">

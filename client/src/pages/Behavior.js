@@ -9,18 +9,6 @@ import Markdown from "../components/Markdown"
 import behavoirMD from "../markdown/behavoir.md"
 import styled from "styled-components"
 
-const DisplayData = styled.div`
-	grid-column: main;
-	position: absolute;
-	display: flex;
-	top: 1rem;
-	flex-direction: column;
-	span {
-		margin-bottom: 1rem;
-		opacity: 0.5;
-	}
-`
-
 const Behavior = () => {
 	const [timeStamp, setTimeStamp] = useState([])
 
@@ -64,13 +52,18 @@ const Behavior = () => {
 		setTimeStamp(numbersCopy)
 	}
 
+	const [markdown, setMarkdown] = useState("")
+
 	useEffect(() => {
+		fetch(behavoirMD)
+			.then((response) => response.text())
+			.then((result) => setMarkdown(result))
 		window.addEventListener("keydown", handleKeydown)
 
 		return () => {
 			window.removeEventListener("keydown", handleKeydown)
 		}
-	}, [timeStamp])
+	}, [timeStamp, behavoirMD])
 
 	let navigate = useNavigate()
 	const [firstName, setFirstName] = useState("")
@@ -91,7 +84,6 @@ const Behavior = () => {
 
 	return (
 		<>
-			{/* <DisplayData></DisplayData> */}
 			<Layout>
 				<Title>Behavior 🖱️ </Title>
 				<Form onSubmit={onSubmit}>

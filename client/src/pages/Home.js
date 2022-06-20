@@ -29,8 +29,12 @@ const Home = () => {
 				</Gallery>
 				<Title>Empfehlungen</Title>
 				<Gallery>
-					<Card title="Alles" price="100,00" link="/alles" />
-					<Card title="oder nichts" price="0,00" link="/nichts" />
+					{/* <Card title="Alles" price="100,00" link="/alles" /> */}
+					<Card
+						title="No Protection 🧿"
+						price="0,00"
+						link="/noprotection"
+					/>
 					<Card title="Not a Link ⚓" price="64,00" link={false} />
 				</Gallery>
 			</Main>
