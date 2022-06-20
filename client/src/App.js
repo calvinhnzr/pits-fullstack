@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react";
+
+
 import {
 	BrowserRouter as Router,
 	Route,
@@ -82,4 +84,4 @@ function App() {
 	)
 }
 
-export default App
+export default App;

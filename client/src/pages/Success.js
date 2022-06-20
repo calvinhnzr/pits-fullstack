@@ -7,6 +7,7 @@ const Success = () => {
 		<>
 			<Layout>
 				<Title>Form submitted!</Title>
+
 			</Layout>
 		</>
 	)
