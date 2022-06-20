@@ -16,29 +16,11 @@ const Title = styled.h3`
 `
 
 const Home = () => {
-	const [isBot, setIsBot] = useState(true)
-
-	let navigate = useNavigate()
-
-	function toggleBot() {
-		setIsBot(false)
-		// navigate("/failure")
-		console.log("bot!")
-	}
-
-	useEffect(() => {
-		if (isBot) {
-			// return navigate("/failure")
-			toggleBot()
-		}
-	}, [])
-
 	return (
 		<div>
 			<Header />
 			<Main>
 				<Title>Bestseller</Title>
-				<button onClick={() => navigate("/failure")}>clikc</button>
 				<Gallery>
 					<Card title="Honeypot 🍯" price="8,00" link="/honeypot" />
 					<Card title="Captcha 🤖" price="16,00" link="/captcha" />
