@@ -20,18 +20,9 @@ const Home = () => {
 		<div>
 			<Header />
 			<Main>
-				{/* <Title>Bestseller</Title>
-				<Gallery>
-					<Card
-						title="No Protection 🥒"
-						price="0,00"
-						link="/noprotection"
-					/>
-				</Gallery> */}
 				<Title>Empfehlungen</Title>
 				<Gallery>
 					{/* <Card title="Alles" price="100,00" link="/alles" /> */}
-
 					<Card title="Captcha 🤖" price="16,00" link="/captcha" />
 					{/* <Card title="User Agent" price="32,00" link="/useragent" /> */}
 					<Card title="Behavior 🖱️" price="32,00" link="/behavior" />

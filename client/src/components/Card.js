@@ -8,6 +8,7 @@ const StyledCard = styled.div`
 	border-radius: 0.5rem;
 	box-shadow: 4px 4px 20px 1px rgba(0, 0, 0, 0.25);
 	aspect-ratio: 9 / 10;
+	aspect-ratio: 4 / 2;
 	position: relative;
 	/* background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%); */
 	a {
@@ -32,7 +33,7 @@ const StyledCard = styled.div`
 		opacity: 0;
 	}
 	h3 {
-		font-size: 1.4rem;
+		font-size: 1.6rem;
 
 		letter-spacing: 1px;
 		color: white;
