@@ -12,9 +12,18 @@ import Layout from "../components/Layout"
 // features: random hash, honeypot input fields
 
 const StyledHoney = styled.label`
-	color: #f6d365;
 	font-weight: bold;
 	letter-spacing: 1px;
+	display: inline;
+	font-weight: 300;
+	margin-bottom: 0.5rem;
+	span {
+		color: #f6d365;
+		display: inline;
+		width: fit-content;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+	}
 	&.hidden {
 		opacity: 0;
 		position: absolute;
@@ -79,7 +88,7 @@ const Honeypot = () => {
 					<StyledHoney
 						htmlFor="name"
 						className={toggleHoneyBot ? "" : "hidden"}>
-						Honeypot
+						<span>Honeypot</span> Als Mensch bitte nicht ausfüllen.
 						<input
 							autoComplete="off"
 							type="text"
