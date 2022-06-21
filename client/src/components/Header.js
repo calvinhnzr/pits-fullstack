@@ -6,7 +6,7 @@ import img from "../images/headerBG.png"
 const StyledHeader = styled.header`
 	width: 100%;
 	height: 20rem;
-	background-color: #191a1b;
+	background-color: #484848;
 	background-size: cover;
 	background-position: 0;
 	display: flex;

@@ -9,9 +9,18 @@ import Markdown from "../components/Markdown"
 import behavoirMD from "../markdown/behavoir.md"
 import styled from "styled-components"
 
+const DisplayData = styled.div`
+	grid-column: main;
+	position: absolute;
+	right: 0;
+	font-size: 1.5rem;
+	top: 1.9rem;
+	color: #aafc83;
+`
+
 const Behavior = () => {
 	const [timeStamp, setTimeStamp] = useState([])
-
+	const [myscore, setmyscore] = useState(0)
 	function getDifference(array) {
 		// array mit Differenzen zwischen den Keypresses
 		let tempArr = []
@@ -23,7 +32,7 @@ const Behavior = () => {
 			temp = Math.round(temp)
 			tempArr.push(temp)
 		}
-		console.log(tempArr)
+		// console.log(tempArr)
 		return tempArr
 	}
 
@@ -41,8 +50,8 @@ const Behavior = () => {
 			lineareAbweichung += Math.abs(newArr[j] - mittelwert)
 		}
 		lineareAbweichung *= 1 / newArr.length
-		console.log(mittelwert)
-		console.log(lineareAbweichung)
+		// console.log(mittelwert)
+		// console.log(lineareAbweichung)
 		return lineareAbweichung
 	}
 
@@ -50,6 +59,9 @@ const Behavior = () => {
 		let numbersCopy = [...timeStamp]
 		numbersCopy.push(e.timeStamp)
 		setTimeStamp(numbersCopy)
+
+		//
+		setmyscore(getLinearRegression(getDifference(timeStamp)))
 	}
 
 	const [markdown, setMarkdown] = useState("")
@@ -73,7 +85,8 @@ const Behavior = () => {
 
 	function onSubmit(e) {
 		let score = getLinearRegression(getDifference(timeStamp))
-
+		score = Math.round(score)
+		console.log("final score: ", score)
 		if (score > 10) {
 			navigate("/success")
 		} else {
@@ -86,6 +99,14 @@ const Behavior = () => {
 		<>
 			<Layout>
 				<Title>Behavior 🖱️ </Title>
+				<DisplayData
+					style={
+						Math.round(myscore) > 10
+							? { color: "#aafc83" }
+							: { color: "#e03d3d" }
+					}>
+					{Math.round(myscore)}
+				</DisplayData>
 				<Form onSubmit={onSubmit}>
 					<label>
 						Vorname
@@ -113,7 +134,7 @@ const Behavior = () => {
 						E-Mail
 						<input
 							type="email"
-							required
+							// required
 							name={`mail`}
 							value={mail}
 							placeholder="menschliche@mailadresse.com"
