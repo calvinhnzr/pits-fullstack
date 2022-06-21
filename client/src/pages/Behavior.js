@@ -13,9 +13,14 @@ const DisplayData = styled.div`
 	grid-column: main;
 	position: absolute;
 	right: 0;
-	font-size: 1.5rem;
-	top: 1.9rem;
-	color: #aafc83;
+
+	/* top: 1.9rem; */
+	color: white;
+	text-align: right;
+	span {
+		font-size: 1.5rem;
+		margin-top: 0.5rem;
+	}
 `
 
 const Behavior = () => {
@@ -99,13 +104,16 @@ const Behavior = () => {
 		<>
 			<Layout>
 				<Title>Behavior 🖱️ </Title>
-				<DisplayData
-					style={
-						Math.round(myscore) > 10
-							? { color: "#aafc83" }
-							: { color: "#e03d3d" }
-					}>
-					{Math.round(myscore)}
+				<DisplayData>
+					LR:{" "}
+					<span
+						style={
+							Math.round(myscore) > 10
+								? { color: "#aafc83" }
+								: { color: "#e03d3d" }
+						}>
+						{Math.round(myscore)}
+					</span>
 				</DisplayData>
 				<Form onSubmit={onSubmit}>
 					<label>
