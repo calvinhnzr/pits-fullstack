@@ -7,7 +7,7 @@ const StyledCard = styled.div`
 	background-color: #595959;
 	border-radius: 0.5rem;
 	box-shadow: 4px 4px 20px 1px rgba(0, 0, 0, 0.25);
-	aspect-ratio: 3 / 4;
+	aspect-ratio: 9 / 10;
 	position: relative;
 	/* background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%); */
 	a {

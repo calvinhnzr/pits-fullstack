@@ -6,7 +6,7 @@ const StyledMain = styled.main`
 	margin: 2rem auto;
 	display: grid;
 	gap: 2rem;
-	height: calc(100vh - 7rem);
+	/* height: calc(100vh - 7rem); */
 	grid-template-columns: repeat(12, 1fr);
 	/* outline: 1px solid green; */
 	align-content: start;

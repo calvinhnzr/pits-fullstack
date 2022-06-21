@@ -6,7 +6,7 @@ const StyledGallery = styled.div`
 	margin: 0 auto 2rem;
 	grid-column: 1 / 13;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	gap: 2rem;
 
 	/* overflow: scroll; */
